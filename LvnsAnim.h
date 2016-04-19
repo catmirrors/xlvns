@@ -19,7 +19,7 @@ typedef struct {
     int x;
     int y;
     LvnsImage *image;
-} LvnsAnimationData;    /* $BC1=c%"%K%a=hM}MQ(B */
+} LvnsAnimationData;    /* 単純アニメ処理用 */
 
 void LvnsInitAnimation(Lvns *lvns, LvnsAnimationData *data);
 void LvnsAnimation(Lvns *lvns, LvnsAnimationData *data);

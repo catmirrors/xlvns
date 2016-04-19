@@ -6,7 +6,7 @@
 #include "Lvns.h"
 
 /**
- * $B%G%U%)%k%H$NI=<(=hM}(B
+ * デフォルトの表示処理
  */
 void
 LvnsDefaultMenuDisp(Lvns *lvns, MenuData *data)
@@ -20,7 +20,7 @@ LvnsDefaultMenuDisp(Lvns *lvns, MenuData *data)
 }
 
 /**
- * $B%]%$%s%?$N0LCV%A%'%C%/(B
+ * ポインタの位置チェック
  */
 static int
 check_pos(Lvns *lvns, MenuData *data)
@@ -42,7 +42,7 @@ check_pos(Lvns *lvns, MenuData *data)
 }
 
 /**
- * $B%a%K%e!<=hM}(B
+ * メニュー処理
  */
 int
 LvnsMenu(Lvns *lvns, MenuData *data, int cancelok)
@@ -78,7 +78,7 @@ LvnsMenu(Lvns *lvns, MenuData *data, int cancelok)
 
 		if ((!lvns->effect_back || !lvns->enable_effect_back)
 		    && changed) {
-			/* $B:FIA2h=hM}(B */
+			/* 再描画処理 */
 			LvnsDispWindow(lvns);
 			changed = False;
 		}
@@ -131,12 +131,12 @@ LvnsMenu(Lvns *lvns, MenuData *data, int cancelok)
 		}
 	}
 
-	// $BI=<(=hM}2r=|(B
+	// 表示処理解除
 	LvnsSetDispFunc(lvns, NULL, NULL);
 	LvnsDispWindow(lvns);
 
 	if (!lvns->text_cursor_state) {
-		/* $B%-%c%s%;%k(B */
+		/* キャンセル */
 		ret =  -1;
 	} else if (data->menu) {
 		ret = data->menu(lvns, lvns->text_cursor_state);

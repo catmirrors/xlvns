@@ -3,13 +3,13 @@
 
 typedef struct {
 	void *depend;
-    void (*open)(void *dep);                 /* BGM$B=i4|2=(B       */
-    void (*close)(void *dep);                /* BGM$B=*N;(B         */
-    void (*start)(void *dep, int no);        /* $B1iAU3+;O(B        */
-    void (*stop)(void *dep);                 /* $B1iAU=*N;(B        */
-    void (*pause)(void *dep);                /* $B1iAU0l;~Dd;_(B    */
-    void (*setVolume)(void *dep, int no);    /* $B%\%j%e!<%`;XDj(B  */
-    int  (*getState)(void *dep);             /* $B1iAUCf%A%'%C%/(B  */
+    void (*open)(void *dep);                 /* BGM初期化       */
+    void (*close)(void *dep);                /* BGM終了         */
+    void (*start)(void *dep, int no);        /* 演奏開始        */
+    void (*stop)(void *dep);                 /* 演奏終了        */
+    void (*pause)(void *dep);                /* 演奏一時停止    */
+    void (*setVolume)(void *dep, int no);    /* ボリューム指定  */
+    int  (*getState)(void *dep);             /* 演奏中チェック  */
 } Music;
 
 #define MusicOpen(m)        if ((m) && (m)->open)  (m)->open((m)->depend)

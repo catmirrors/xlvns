@@ -17,7 +17,7 @@
 #define RAD(a) (M_PI)*((a)%DEGMAX)/(DEGMAX/2)
 #define A 200
 
-/* $B>uBVA+0\(B */
+/* 状態遷移 */
 static void
 SinEffectSetState2(Lvns *lvns)
 {

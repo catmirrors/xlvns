@@ -125,7 +125,7 @@ checkModeLinesRes(XF86VidModeModeInfo **modeinfos, int count, int w, int h)
 }
 
 /**
- * $BA42hLL%b!<%I$KA+0\(B
+ * 全画面モードに遷移
  */
 static void
 _ToScreenMode(FullScreenShellWidget fssw)
@@ -191,7 +191,7 @@ ToScreenMode(FullScreenShellWidget fssw)
 
 
 /**
- * $BA42hLL%b!<%I$X@Z$jBX$((B
+ * 全画面モードへ切り替え
  */
 static void ScreenMode(Widget w, XEvent *e, String *p, Cardinal *n)
 {
@@ -199,7 +199,7 @@ static void ScreenMode(Widget w, XEvent *e, String *p, Cardinal *n)
 }
 
 /**
- * $B%&%#%s%I%&%b!<%I$X@Z$jBX$((B
+ * ウィンドウモードへ切り替え
  */
 static void
 WindowMode(Widget w, XEvent *e, String *p, Cardinal *n)
@@ -208,7 +208,7 @@ WindowMode(Widget w, XEvent *e, String *p, Cardinal *n)
 }
 
 /**
- * $BA42hLL%b!<%I$H%&%#%s%I%&%b!<%I$N@Z$jBX$((B
+ * 全画面モードとウィンドウモードの切り替え
  */
 static void
 ScreenWindow(Widget w, XEvent *e, String *p, Cardinal *n)
@@ -222,7 +222,7 @@ ScreenWindow(Widget w, XEvent *e, String *p, Cardinal *n)
 }
 
 /**
- * $B%9%/%j!<%s%b!<%I$N>l9g$OF~NO%U%)!<%+%9$r<hF@$9$k(B
+ * スクリーンモードの場合は入力フォーカスを取得する
  */
 static void
 Enter(Widget w, XEvent *e, String *p, Cardinal *n)
@@ -233,7 +233,7 @@ Enter(Widget w, XEvent *e, String *p, Cardinal *n)
 }
 
 /**
- * $B%9%/%j!<%s%b!<%I$N>l9g$O%]%$%s%?F~NO$r<hF@$9$k(B
+ * スクリーンモードの場合はポインタ入力を取得する
  */
 static void
 Map(Widget w, XEvent *e, String *p, Cardinal *n)
@@ -260,7 +260,7 @@ Initialize(Widget req, Widget new, ArgList args, Cardinal * num)
 
 	Display *dpy = XtDisplay((Widget)fssw);
 
-    /* $B%9%/%j!<%s%b!<%I$NM-8z(B/$BL58z%A%'%C%/(B */
+    /* スクリーンモードの有効/無効チェック */
 	if (!XF86VidModeQueryVersion(dpy, &major, &minor)) {
 		fprintf(stderr, "Can't query video extension version\n");
 		FSSW.enable_screen_mode = False;
@@ -308,7 +308,7 @@ Realize(Widget w, XtValueMask *mask, XSetWindowAttributes *attr)
 	SUPERCLASS->core_class.realize(w, mask, attr);
 
     if (FSSW.enable_screen_mode && FSSW.screen_mode) {
-		/* $B$$$C$?$s%U%i%0$r>C5n!D(B */
+		/* いったんフラグを消去… */
 		FSSW.screen_mode = False;
         _ToScreenMode(fssw);
     }
@@ -320,7 +320,7 @@ Resize(Widget widget)
     FullScreenShellWidget fssw = (FullScreenShellWidget)widget;
 	if (SUPERCLASS->core_class.resize)
 		SUPERCLASS->core_class.resize(widget);
-	// $B%5%$%:$r5-O?(B
+	// サイズを記録
 	if (FSSW.getsize) {
 		FSSW.width  = COREWIDTH;
 		FSSW.height = COREHEIGHT;
@@ -353,7 +353,7 @@ XtFullScreenShellWidgetSetBestSize(FullScreenShellWidget fssw,
 }
 
 /**
- * $B2hLL$r:G=i$N>uBV$KLa$9(B
+ * 画面を最初の状態に戻す
  */
 void
 XtFullScreenShellWidgetRestoreMode(FullScreenShellWidget fssw)

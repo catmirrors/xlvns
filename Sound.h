@@ -3,12 +3,12 @@
 
 typedef struct {
 	void *depend;
-    void (*open)(void *dep);                    /* SOUND$B=i4|2=(B         */
-    void (*close)(void *dep);                   /* SOUND$B=*N;(B           */
-    void (*load)(void *dep, const char *name);  /* $B%G!<%?$N%m!<%I(B      */
-    void (*start)(void *dep);                   /* $B:F@83+;O(B            */
-    void (*stop)(void *dep);                    /* $BDd;_(B                */
-    int  (*getState)(void *dep);                /* $B1iAUCf%A%'%C%/(B      */
+    void (*open)(void *dep);                    /* SOUND初期化         */
+    void (*close)(void *dep);                   /* SOUND終了           */
+    void (*load)(void *dep, const char *name);  /* データのロード      */
+    void (*start)(void *dep);                   /* 再生開始            */
+    void (*stop)(void *dep);                    /* 停止                */
+    int  (*getState)(void *dep);                /* 演奏中チェック      */
 } Sound;
 
 #define SoundOpen(m)     if ((m) && (m)->open)  (m)->open((m)->depend)

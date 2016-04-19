@@ -5,20 +5,20 @@
 
 typedef struct {
     enum {
-        LVNS_SCRIPT_BG,                 /* $BGX7J%m!<%I(B       */
-        LVNS_SCRIPT_DISP,               /* $B2hA|I=<((B(BG$B$+$i(B) */
-        LVNS_SCRIPT_DISP_VRAM,          /* $B2hA|I=<((B         */
-        LVNS_SCRIPT_CLEAR,              /* $B2hA|>C5n(B         */               
-        LVNS_SCRIPT_MUSIC,              /* $B2;3Z:F@8(B         */
+        LVNS_SCRIPT_BG,                 /* 背景ロード       */
+        LVNS_SCRIPT_DISP,               /* 画像表示(BGから) */
+        LVNS_SCRIPT_DISP_VRAM,          /* 画像表示         */
+        LVNS_SCRIPT_CLEAR,              /* 画像消去         */               
+        LVNS_SCRIPT_MUSIC,              /* 音楽再生         */
         LVNS_SCRIPT_MUSIC_FADE,
-        LVNS_SCRIPT_WAIT_MUSIC,         /* $B2;3Z=*N;BT$A(B     */
+        LVNS_SCRIPT_WAIT_MUSIC,         /* 音楽終了待ち     */
         LVNS_SCRIPT_ANIM,
         LVNS_SCRIPT_WAIT_CLICK,
-        LVNS_SCRIPT_WAIT,               /* $B;XDj;~4VBT$A(B         */
-        LVNS_SCRIPT_TIMER_INIT,         /* $BBT$A;~4V%?%$%^=i4|2=(B */
-        LVNS_SCRIPT_TIMER_WAIT,         /* $B;XDj;~4V7P2a$^$GBT$D(B */
-        LVNS_SCRIPT_FUNC,               /* $B4X?t8F$S=P$7(B         */
-        LVNS_SCRIPT_LOOP_FUNC,        /* $B4X?t8F$S=P$7(B         */
+        LVNS_SCRIPT_WAIT,               /* 指定時間待ち         */
+        LVNS_SCRIPT_TIMER_INIT,         /* 待ち時間タイマ初期化 */
+        LVNS_SCRIPT_TIMER_WAIT,         /* 指定時間経過まで待つ */
+        LVNS_SCRIPT_FUNC,               /* 関数呼び出し         */
+        LVNS_SCRIPT_LOOP_FUNC,        /* 関数呼び出し         */
         LVNS_SCRIPT_CLICK_JUMP,
 		LVNS_SCRIPT_WHITEOUT,
 		LVNS_SCRIPT_WHITEIN,
@@ -28,17 +28,17 @@ typedef struct {
     void *data0;
     void *data1;
     void *data2;
-} LvnsScriptData;       /* OP/ED $B%9%/%j%W%H=hM}MQ(B */
+} LvnsScriptData;       /* OP/ED スクリプト処理用 */
 
 typedef struct LvnsScript {
-    LvnsScriptData *data;       /* $B%9%/%j%W%H%G!<%?(B       */
-    int cur;                    /* $B<B9T%+!<%=%k(B           */
-    int state;                  /* $B%9%F!<%H(B               */
+    LvnsScriptData *data;       /* スクリプトデータ       */
+    int cur;                    /* 実行カーソル           */
+    int state;                  /* ステート               */
 } LvnsScript;
 
 typedef int LvnsScriptFunc(struct Lvns *lvns, LvnsScript *scr, void *param1, void *param2);
 
-/* LvnsScript.c OP/ED $BMQ(B $B%9%/%j%W%H=hM}(B */
+/* LvnsScript.c OP/ED 用 スクリプト処理 */
 void LvnsScriptRun(Lvns *lvns, LvnsScriptData *data);
 
 #endif

@@ -26,7 +26,7 @@ filemap(const char *path, size_t *size)
 		close(fd);
 		return NULL;
 	}
-	close(fd);    /* $B%^%C%W$7$?$N$GITMW(B */
+	close(fd);    /* マップしたので不要 */
 
 	if (size)
 		*size = sb.st_size;

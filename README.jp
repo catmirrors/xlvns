@@ -8,285 +8,285 @@
  *
  *    -- XLVNS 1-2-3 --
  *
- * $B!V<6!W(B for X Ver 1.9
- * $B!V:/!W(B for X Ver 1.6
- * $B!V(BToHeart$B!W(B for X Ver 1.1
+ * 「雫」 for X Ver 1.9
+ * 「痕」 for X Ver 1.6
+ * 「ToHeart」 for X Ver 1.1
  */
 
-$B!|(B $B$O$8$a$K(B
+● はじめに
 
-  UNIX + X $B$G(B Leaf $B:nIJ$,M7$Y$J$$$N$O4V0c$C$F$$$k$H;W$$$^$9(B($B$^$B(B)$B!#(B 
-  Wine ? $B$7$g$;$s%(%_%e$G$9(B($BK=8@(B)$B!#$d$C$Q(B Native $B4D6-$GF0$+$J$$$H(B
-  $B0UL#$,L5$$$G$9!#(B
+  UNIX + X で Leaf 作品が遊べないのは間違っていると思います(まぢ)。 
+  Wine ? しょせんエミュです(暴言)。やっぱ Native 環境で動かないと
+  意味が無いです。
 
-  $B$H$$$&$o$1$G:n$j$^$7$?(B :D
+  というわけで作りました :D
 
-$B!|(B $BF0:n>r7o(B
+● 動作条件
  
- $BK\%W%m%0%i%`$,F0:n$9$k$?$a$K$O!"(BWindows 95/98 $BMQ$N(B
- $B<!$N(B Leaf $B:nIJ$,I,MW$K$J$j$^$9!#9XF~$7$F2<$5$$!#(B
+ 本プログラムが動作するためには、Windows 95/98 用の
+ 次の Leaf 作品が必要になります。購入して下さい。
 
- $B!V<6(B $B!A$7$:$/!A!W(B  (c)Copyright 1996,1999 Leaf/AQUAPLUS
- $B!V:/(B $B!A$-$:$"$H!A!W(B(c)Copyright 1996,1999 Leaf/AQUAPLUS
- $B!V(BTo Heart$B!W(B       (c)Copyright 1997,1999 Leaf/AQUAPLUS
+ 「雫 〜しずく〜」  (c)Copyright 1996,1999 Leaf/AQUAPLUS
+ 「痕 〜きずあと〜」(c)Copyright 1996,1999 Leaf/AQUAPLUS
+ 「To Heart」       (c)Copyright 1997,1999 Leaf/AQUAPLUS
 
- $B$=$l$>$l$N%j%K%e!<%"%k%P!<%8%g%s$G$bF0:n$9$k$b$N$H;W$o$l$^$9$,L$3NG'$G$9!#(B
+ それぞれのリニューアルバージョンでも動作するものと思われますが未確認です。
 
- $B!V!|(B $BCx:n8"$K$D$$$F!W$b$4;2>H2<$5$$!#(B
+ 「● 著作権について」もご参照下さい。
 
- $BF0:n4D6-(B:
+ 動作環境:
  
-  $B!&(BX11R6 $BMQ$N%/%i%$%"%s%H$,F0:n$9$k(B UNIX $B7O$N(B OS
-  $B!&(BX Window System
-     Shared-Memory Extention $B4D6-?d>)$G$9(B
+  ・X11R6 用のクライアントが動作する UNIX 系の OS
+  ・X Window System
+     Shared-Memory Extention 環境推奨です
 
-  $B8=:_$N%P!<%8%g%s$G$O!"(BCD-DA $B$K$h$k(B BGM $B1iAU$H%5%&%s%I$K(B
-  $B$D$$$F$O<!$N%7%9%F%`$N$_BP1~$7$F$$$^$9!#(B
+  現在のバージョンでは、CD-DA による BGM 演奏とサウンドに
+  ついては次のシステムのみ対応しています。
 
-   $B!&(B4.4BSD $B7O(B PC-UNIX 
-   $B!&(BLinux $B7O(B PC-UNIX
-   $B!&(BSunOS 5 (Solaris2)
-      OSS $B8_49%5%&%s%I%G%P%$%9(B $B$^$?$O(B SunOS $B8_49%G%P%$%9(B $B$^$?$O(B
-      Esound System $B$,I,MW$G$9!#(BCD-DA $B$O(B ioctl $B$K$h$k@)8f$K$J$j$^$9!#(B
+   ・4.4BSD 系 PC-UNIX 
+   ・Linux 系 PC-UNIX
+   ・SunOS 5 (Solaris2)
+      OSS 互換サウンドデバイス または SunOS 互換デバイス または
+      Esound System が必要です。CD-DA は ioctl による制御になります。
 
-  $B$=$NB>$N(B OS $B$N>l9g$K$b!"(Bcdinfo.c $B$H(B audioinfo.c $B$K$=$N(B OS $B$K1~$8$?(B
-  $BE,@Z$J%3!<%I$rDI2C$9$l$P2;3Z1iAU$,5!G=$9$k$h$&$K$J$j$^$9!#(B
-  $B%G%U%)%k%H$G$O>e5-(B OS $B0J30$N>l9g$K$O!"%@%_!<$N2?$b$7$J$$4X?t$,(B
-  $B%3%s%Q%$%k$5$l$k$h$&$K$J$C$F$$$^$9!#(B
+  その他の OS の場合にも、cdinfo.c と audioinfo.c にその OS に応じた
+  適切なコードを追加すれば音楽演奏が機能するようになります。
+  デフォルトでは上記 OS 以外の場合には、ダミーの何もしない関数が
+  コンパイルされるようになっています。
 
-  XFree86 VidMode Extention $B$,$D$+$($k%5!<%P$G$O!VA42hLL%b!<%I!W(B
- $B$G$NF0:n$,2DG=$K$J$C$F$$$^$9!#(B
+  XFree86 VidMode Extention がつかえるサーバでは「全画面モード」
+ での動作が可能になっています。
 
-  OpenBSD 2.7, FreeBSD 3.5.1,  NetBSD 1.4.2 $B$G$NF0:n$r3NG'$7$F$$$^$9!#(B
+  OpenBSD 2.7, FreeBSD 3.5.1,  NetBSD 1.4.2 での動作を確認しています。
 
   ======================================================================
-  $B"((B Linux $B$*$h$S(B Solaris $B$NItJ,$O:n<T$OL$3NG'$G$9(B
+  ※ Linux および Solaris の部分は作者は未確認です
   ======================================================================
 
-$B!|(B $B%$%s%9%H!<%kJ}K!(B
+● インストール方法
   
-  (1) config.tmpl $B$NJQ99(B
+  (1) config.tmpl の変更
   
-   config.tmpl $B$K$"$k@_Dj$r4D6-$K$"$o$;$FJQ99$7$^$9(B
+   config.tmpl にある設定を環境にあわせて変更します
 
    XLVNSPACKDIR 
 
-     LVNS $B$N(B PAK $B%G!<%?$r3JG<$7$F$"$k%G%#%l%/%H%j$r;XDj$7$^$9!#(B
-     $B%G%U%)%k%H(B: $(LIBDIR)/xlvns
+     LVNS の PAK データを格納してあるディレクトリを指定します。
+     デフォルト: $(LIBDIR)/xlvns
 
    CDDEVICE
 
-     CD-DA $B$r1iAU$9$k$?$a$N(B CD $B$N%G%P%$%9L>$r@_Dj$7$^$9!#(B
-     $B%G%U%)%k%H(B: /dev/cd0a
+     CD-DA を演奏するための CD のデバイス名を設定します。
+     デフォルト: /dev/cd0a
 
    AUDIODEVICE
 
-     SE $B$r:F@8$9$k$?$a$N%*!<%G%#%*%G%P%$%9L>$r;XDj$7$^$9(B
-     $B%G%U%)%k%H(B: /dev/audio
+     SE を再生するためのオーディオデバイス名を指定します
+     デフォルト: /dev/audio
 
    --------------------------------------------------
-    $B!V(BXCOMM  - for ESD support -$B!W(B
+    「XCOMM  - for ESD support -」
    
-    $B$NItJ,$rM-8z$K$9$k$H!"(BOSS/SunAudio $B$G$OL5$/!"(B
-    Esound System $B$rMxMQ$9$k$h$&$K$J$j$^$9!#(B
-    $B$3$N>l9g!"(BAUDIODEVICE $B$O(B ESD $B$,F0:n$7$F$$$k%[%9%HL>(B 
-    $B$r;X$9$h$&$K$J$j$^$9!#%i%$%V%i%j$N>l=j$J$I$rE,59;XDj(B
-    $B$7$F2<$5$$!#(B
+    の部分を有効にすると、OSS/SunAudio では無く、
+    Esound System を利用するようになります。
+    この場合、AUDIODEVICE は ESD が動作しているホスト名 
+    を指すようになります。ライブラリの場所などを適宜指定
+    して下さい。
    -------------------------------------------------- 
 
-   (2) $B%3%s%Q%$%k(B/$B%$%s%9%H!<%k(B
+   (2) コンパイル/インストール
 
-    $BDL>o$N(B X $B%"%W%j%1!<%7%g%s$N%$%s%9%H!<%k<j=g$K=>$$$^$9(B
+    通常の X アプリケーションのインストール手順に従います
 
       % xmkmf
       % make
       # make install
 
-   (3) PAK $B%U%!%$%k$N%$%s%9%H!<%k(B
+   (3) PAK ファイルのインストール
   
-     $B%*%j%8%J%k$N(B LVNS $B$N%Q%C%/%U%!%$%k$r(B XLVNSPACKDIR $B$G;XDj(B
-     $B$7$?%G%#%l%/%H%j$K%3%T!<$9$k$+%j%s%/$rD%$j$^$9(B
+     オリジナルの LVNS のパックファイルを XLVNSPACKDIR で指定
+     したディレクトリにコピーするかリンクを張ります
 
-   $B$J$*!"$=$l$>$l$N(B PAK $B%U%!%$%k$NL>>N$O<!$N$h$&$K$J$C$F$$$^$9!#(B
-   To Heart $B$N$_Kd$a9~$_%G!<%?$N;2>H$N$?$a<B9T%U%!%$%k$bI,MW$K$J$j$^$9!#(B
+   なお、それぞれの PAK ファイルの名称は次のようになっています。
+   To Heart のみ埋め込みデータの参照のため実行ファイルも必要になります。
 
-    $B<6(B:         MAX_DATA.PAK
-    $B:/(B:         MAX2DATA.PAK
+    雫:         MAX_DATA.PAK
+    痕:         MAX2DATA.PAK
     To Heart:   LVNS3DAT.PAK, LVNS3SCN.PAK, LVNS3.EXE
 
 
-$B!|(B $B5/F0J}K!(B
+● 起動方法
 
-  XLvns $B$N5/F0J}K!$O<!$NDL$j$G$9!#(B
+  XLvns の起動方法は次の通りです。
 
  % xlvns [option] 
 
-   -name $B%*%W%7%g%s$G5/F0$9$k%2!<%`$r;XDj$7$^$9!#(B
+   -name オプションで起動するゲームを指定します。
 
-     -name lvns1   $B!V<6!W(B
-     -name lvns2   $B!V:/!W(B
-     -name lvns3   $B!V(BTo Heart$B!W(B
+     -name lvns1   「雫」
+     -name lvns2   「痕」
+     -name lvns3   「To Heart」
 
-   $B>JN,;~$K$O!V<6!W$K$J$j$^$9!#(B
+   省略時には「雫」になります。
 
-  $B$=$NB>$N%*%W%7%g%s(B:
+  その他のオプション:
 
-     -demo   $B%G%b%b!<%I(B
+     -demo   デモモード
  
-    $BA`:n$r$7$J$/$F$b!"<+F0E*$K%2!<%`$,?J$_$^$9!#(B
-    $BA*Br;h$O0lDj;~4V7P2a$9$k$H%i%s%@%`$GA*Br$5$l$^$9!#(B
+    操作をしなくても、自動的にゲームが進みます。
+    選択肢は一定時間経過するとランダムで選択されます。
 
-     -screen $B%9%/%j!<%s%b!<%I(B
+     -screen スクリーンモード
 
-    $BA42hLL%b!<%I(B (640$B!_(B480 $B$^$?$O(B 800$B!_(B600)$B$G5/F0$7$^$9!#(B
+    全画面モード (640×480 または 800×600)で起動します。
 
-    $B$3$N%b!<%I$GF0:n$5$;$k$?$a$K$O(BXFree86 VidMode Extention $B$,I,MW$G$9!#(B
-    $B$^$?!"(B640$B!_(B480 $B$^$?$O(B 800$B!_(B600 $B$N2hLL%b!<%I$r(B XFree86 $BB&$G@_Dj$7$F(B
-    $B$*$/I,MW$,$"$j$^$9!#(B/etc/XF86Config $B$J$I$KE,@Z$J@_Dj$rDI2C$7$F2<$5$$!#(B
+    このモードで動作させるためにはXFree86 VidMode Extention が必要です。
+    また、640×480 または 800×600 の画面モードを XFree86 側で設定して
+    おく必要があります。/etc/XF86Config などに適切な設定を追加して下さい。
 
-     -fastclick $B9bB.%-!<F~NO%b!<%I(B
+     -fastclick 高速キー入力モード
 
-    $BDL>o!"L$FIJ8=q$O%-!<F~NO$,$"$k$^$GI=<($r$H$P$9$3$H$O$G$-$^$;$s!#(B
-    $B$3$N%*%W%7%g%s$r$D$1$F5/F0$7$F$$$k>l9g$K$O!"$$$D$G$b%-!<F~NO$G(B
-    $B$=$NI=<($r$H$P$9$3$H$,2DG=$G$9!#(B
+    通常、未読文書はキー入力があるまで表示をとばすことはできません。
+    このオプションをつけて起動している場合には、いつでもキー入力で
+    その表示をとばすことが可能です。
 
-  $B5/F0;~$K<!$N4D6-JQ?t$,@_Dj$5$l$F$$$?>l9g$K$O!"(B
-  $B%3%s%Q%$%k;~$N@_Dj$h$jM%@h$7$F;2>H$5$l$^$9(B
+  起動時に次の環境変数が設定されていた場合には、
+  コンパイル時の設定より優先して参照されます
 
-  DISC          CD-DA $B$r:F@8$9$k%G%P%$%9L>(B
-  AUDIODEVICE   SE $B$r:F@8$9$k%*!<%G%#%*%G%P%$%9L>(B
-  XLVNSPACKDIR  LVNS $B$N(B PACK $B%U%!%$%k$r3JG<$7$?%G%#%l%/%H%j(B
+  DISC          CD-DA を再生するデバイス名
+  AUDIODEVICE   SE を再生するオーディオデバイス名
+  XLVNSPACKDIR  LVNS の PACK ファイルを格納したディレクトリ
  
-$B!|(B $BA`:nJ}K!(B
+● 操作方法
 
-  $B4pK\E*$K(B Windows $BHG$NA`:n$K=`$8$^$9(B
+  基本的に Windows 版の操作に準じます
 
-  $B4pK\E*%-!<A`:n(B
+  基本的キー操作
 
-    RETURN/$B:8%/%j%C%/(B:  $BA*Br(B
-    ESC/$B1&%/%j%C%/(B:     $B%a%K%e!<I=<((B
-    $B%+!<%=%k(B/$B%^%&%9(B:    $BA*Br%+!<%=%k0\F0(B
-    $B%9%Z!<%9(B:           $B2hA|I=<(%b!<%I@Z$jBX$((B
-    s $B%-!<(B:             $BA*Br;h$^$G$H$P$9(B
-    Meta+Return:        $B%&%#%s%I%&%b!<%I$HA42hLL%b!<%I$N@Z$jBX$((B
+    RETURN/左クリック:  選択
+    ESC/右クリック:     メニュー表示
+    カーソル/マウス:    選択カーソル移動
+    スペース:           画像表示モード切り替え
+    s キー:             選択肢までとばす
+    Meta+Return:        ウィンドウモードと全画面モードの切り替え
 
-  $B!&%?%$%H%k$G$N!V=*N;!W$^$?$O(B Window Manager $B$N(B delete $B$G=*N;$G$-$^$9(B
+  ・タイトルでの「終了」または Window Manager の delete で終了できます
 
-  $BCf%\%?%s%a%K%e!<(B
+  中ボタンメニュー
 
-    About: $B%W%m%0%i%`$N%P!<%8%g%s>pJs$,I=<($5$l$^$9(B
-    End:   $B%W%m%0%i%`$r=*N;$7$^$9(B
+    About: プログラムのバージョン情報が表示されます
+    End:   プログラムを終了します
 
-    $B$=$NB>$N9`L\$O%2!<%`Cf$N%a%K%e!<$N5!G=$K=`$8$^$9(B
+    その他の項目はゲーム中のメニューの機能に準じます
 
  == KNOWN BUGS ==
 
-  - $B6&DL(B -
+  - 共通 -
 
-  $B!&%a%K%e!<%P!<$O$"$j$^$;$s!#(B
-  $B!&>o$K!V8+$?J8=q$O$H$P$9!W$N>uBV$G$9!#(B
+  ・メニューバーはありません。
+  ・常に「見た文書はとばす」の状態です。
 
-   - $B<6(B -
+   - 雫 -
 
-  $B!&N\M~;R%7%J%j%*$G$N(B H $B%7!<%s$d$=$NB>$N>l=j$G!":YIt=hM}$GITL@$J(B
-    $BItJ,$,$"$k$?$a!"%*%j%8%J%k$H$O0[$J$C$?I=<($K$J$C$F$$$^$9!#(B
+  ・瑠璃子シナリオでの H シーンやその他の場所で、細部処理で不明な
+    部分があるため、オリジナルとは異なった表示になっています。
 
-  $B!&$*$^$1%7%J%j%*!V0[@1?MJT!W$G$N%(%U%'%/%H$,0lIt<BAu$5$l$F$$$^$;$s!#(B
+  ・おまけシナリオ「異星人編」でのエフェクトが一部実装されていません。
 
-   - $B:/(B -
+   - 痕 -
    
-  $B!&L$<BAu$*$h$S!"BP1~$,IT40A4$J%(%U%'%/%H$,B?$/$"$j$^$9!#(B
+  ・未実装および、対応が不完全なエフェクトが多くあります。
 
    - To Heart -
 
-  $B!&$$$m$$$mCY$$$G$9!D(B
-  $B!&L$<BAu$*$h$S!"BP1~$,IT40A4$J%(%U%'%/%H$,B?$/$"$j$^$9!#(B
-  $B!&!V$*$^$1%7%J%j%*!W$,L$<BAu$G$9(B
+  ・いろいろ遅いです…
+  ・未実装および、対応が不完全なエフェクトが多くあります。
+  ・「おまけシナリオ」が未実装です
 
-$B!|(B $BCx:n8"$K$D$$$F(B
+● 著作権について
 
- ============================ $B=EMW(B ===================================
-$B!&(BLeaf Visual Novel Series $B!V<6!W!V:/!W!V(BTo Heart$B!W(B $B$O(B Leaf$B!"(B
-  ($B3t(B)$B%"%/%"%W%i%9$NCx:nJ*$G$9!#K\%=%U%H%&%'%"$O!"8D?M$NMxMQ$NHO0O$G(B
-  $B$3$NCx:nJ*$K4^$^$l$k%G!<%?$r!V;2>H!W$9$k7A$GF0:n$7$^$9!#(B
+ ============================ 重要 ===================================
+・Leaf Visual Novel Series 「雫」「痕」「To Heart」 は Leaf、
+  (株)アクアプラスの著作物です。本ソフトウェアは、個人の利用の範囲で
+  この著作物に含まれるデータを「参照」する形で動作します。
 
-  $B;2>H$K$h$k%G!<%?$NMxMQ$O!"%"%/%"%W%i%9$+$i5vBz$5$l$F$$$^$9(B
+  参照によるデータの利用は、アクアプラスから許諾されています
 
      http://leaf.aquaplus.co.jp/copyrgt.html 
 
-  $B$3$N;2>H$5$l$?%G!<%?$rFs<!G[I[$9$k$3$H$O6X;_$5$l$F$$$^$9!#(B
+  この参照されたデータを二次配布することは禁止されています。
  ===================================================================== 
 
-$B!&K\%=%U%H%&%'%"$NCx:n8"$O(B $BEOn49d(B(go@denpa.org) $B$,J]M-$7$^$9!#(B
-$B!&K\%=%U%H%&%'%"$N%=!<%9%3!<%I$=$N$b$N$N%i%$%;%s%9$O(B BSD $B%i%$%;%s%9$K(B
-  $B=`$8!"Cx:n8"<T$NL>A0$r5-:\$9$k$3$H$G!";2>H!"2~JQ!"0zMQ$r<+M3$K9T$&(B
-  $B$3$H$,$G$-$^$9!#Cx:n8"<T$X$N3NG'$NI,MW$O$"$j$^$;$s!#(B
-$B!&K\%=%U%H%&%'%"$OL5J]>Z$G$"$j!"$3$N;HMQ$K$h$C$F@8$8$?$$$+$J$kB;32$N@U$b!"(B
-  $BCx:n8"<T$OIi$o$J$$$b$N$H$7$^$9!#$3$l$K9g0U$G$-$J$$>l9g$O!"K\%=%U%H$r(B
-  $B;HMQ$9$k$3$H$O$G$-$^$;$s!#(B
-$B!&K\%=%U%H%&%'%"$K4X$9$kLd$$9g$o$;$rD>@\%"%/%"%W%i%9$K9T$&$3$H$O(B
-  $B$d$a$F2<$5$$!#(B
+・本ソフトウェアの著作権は 渡邊剛(go@denpa.org) が保有します。
+・本ソフトウェアのソースコードそのもののライセンスは BSD ライセンスに
+  準じ、著作権者の名前を記載することで、参照、改変、引用を自由に行う
+  ことができます。著作権者への確認の必要はありません。
+・本ソフトウェアは無保証であり、この使用によって生じたいかなる損害の責も、
+  著作権者は負わないものとします。これに合意できない場合は、本ソフトを
+  使用することはできません。
+・本ソフトウェアに関する問い合わせを直接アクアプラスに行うことは
+  やめて下さい。
 
-$B!&K\%=%U%H%&%'%"A4BN$H$7$F$^$H$^$C$?7A$G$N:FG[I[$O!"CN?M4VEy!"8D?ME*$J(B
-  $BHO0O$K$*$$$F$OM-=~(B/$BL5=~$rLd$o$:!"<+M3$K9T$C$F$+$^$$$^$;$s!#(B
+・本ソフトウェア全体としてまとまった形での再配布は、知人間等、個人的な
+  範囲においては有償/無償を問わず、自由に行ってかまいません。
 
-  ============================ $B=EMW(B ====================================
-  $B$?$@$7!"%M%C%H%o!<%/>e$G$NG[I[!";(;o$J$IN.DL$K$N$k7ABV$G$NG[I[!"B(Gd2q(B
-  $B$G$NG[I[$J$IITFCDjB??t$X$NG[I[$r9T$&>l9g$K$O!"2~JQ$NM-L5$*$h$S(B
-  $B%=!<%9(B/$B%P%$%J%j$N7ABV$K$+$+$o$i$:!"Cx:n8"<T$*$h$S(B($B3t(B)$B%"%/%"%W%i%9$+$i$N(B
-  $B5vBz$rI,MW$H$9$k$b$N$H$7$^$9!#$^$:Cx:n8"<T$K3NG'$r$H$C$F$/$@$5$$!#(B
+  ============================ 重要 ====================================
+  ただし、ネットワーク上での配布、雑誌など流通にのる形態での配布、即売会
+  での配布など不特定多数への配布を行う場合には、改変の有無および
+  ソース/バイナリの形態にかかわらず、著作権者および(株)アクアプラスからの
+  許諾を必要とするものとします。まず著作権者に確認をとってください。
   ====================================================================== 
 
-$B!|(B SPECIAL THANKS
+● SPECIAL THANKS
 
- $BK\%=%U%H$N:n@.$K$*$$$F$O$$$m$s$J$_$J$5$^$N6(NO$r$$$?$@$-$^$7$?!#(B
- $B46<U$7$^$9!#(B
+ 本ソフトの作成においてはいろんなみなさまの協力をいただきました。
+ 感謝します。
 
-  YOSSY $B$5$s(B   
-      PVNS (Palm Visual Novel Series) $B$N:n<TMM!#(B
+  YOSSY さん   
+      PVNS (Palm Visual Novel Series) の作者様。
       (http://www.geocities.co.jp/SiliconValley-SanJose/1497/)
-      LVNS $B2r@O$N$H$C$+$+$j$K$J$k%G!<%?$H;qNA$r$$$?$@$-$^$7$?(B
+      LVNS 解析のとっかかりになるデータと資料をいただきました
 
-  T.F. $B$5$s(B
-      lfview $B$N:n<TMM!#(B
+  T.F. さん
+      lfview の作者様。
       (http://hoshina.denpa.org/)
-      lfg/lf2 $B2hA|7A<0$N%m!<%@$N%3!<%I$r;2>H$5$;$F$$$?$@$-$^$7$?(B
+      lfg/lf2 画像形式のローダのコードを参照させていただきました
 
-  $B6a4V(B $B$5$s(B
-      XSystem3.5 $B$N:n<TMM!#(B
+  近間 さん
+      XSystem3.5 の作者様。
       (http://www.aist-nara.ac.jp/~masaki-c/private/unitbase/xsys35/)
-      Linux $BMQ$N(B CD-DA / Sound $B@)8f$N%3!<%I$r$$$?$@$-$^$7$?!#(B
+      Linux 用の CD-DA / Sound 制御のコードをいただきました。
 
-  $BDEM8(B $B$5$s(B
-      $B%a%C%;!<%8J,N%7?(B Rogue $BMQ!V(BLeaf Rogue$B!W%Q%C%1!<%8$N:n<TMM!#(B
+  津邑 さん
+      メッセージ分離型 Rogue 用「Leaf Rogue」パッケージの作者様。
       (http://www.lab3.kuis.kyoto-u.ac.jp/~tsumura/)
-      Solaris $BMQ$N(B CD-DA $B@)8f$N%3!<%I$r$$$?$@$-$^$7$?!#(B
+      Solaris 用の CD-DA 制御のコードをいただきました。
 
-  $BDGED0l:H$5$s(B
-       XLVNS $B$r4^$a$F!V(BLeafBSD$B!W$H$7$FB(Gd2q$GG[I[$9$k:]$K!"H~No$J(B
-       $B%8%c%1%C%H3($rIA$$$F$$$?$@$$$F$$$^$9!#$3$l$r;}$C$F$$$F$3$=(B
-       $BDL$+$b$7$l$^$;$s(B($B6l>P(B)
+  椎田一哉さん
+       XLVNS を含めて「LeafBSD」として即売会で配布する際に、美麗な
+       ジャケット絵を描いていただいています。これを持っていてこそ
+       通かもしれません(苦笑)
        (http://lenz.pos.to)
       
-   LVNS $B%*%j%8%J%k%9%?%C%U$N$_$J$5$^(B
-      $B$=$b$=$b$3$N:nIJ$,$J$1$l$P$3$s$J$b$N$r:n$m$&$H$b;W$$$^$;$s(B(^^;
-      $B$9$P$i$7$$:nIJ$rLk$K=P$7$F$$$?$@$$$?$3$H$K46<U$7$^$9!#(B
-      (http://www.leaf.co.jp  $B"*(B http://leaf.aquaplus.co.jp/(2000/6$B7n$+$i(B))
+   LVNS オリジナルスタッフのみなさま
+      そもそもこの作品がなければこんなものを作ろうとも思いません(^^;
+      すばらしい作品を夜に出していただいたことに感謝します。
+      (http://www.leaf.co.jp  → http://leaf.aquaplus.co.jp/(2000/6月から))
 
-  XVN-ML$B$N$_$J$5$^$r$O$8$a$H$7$?!"%P%0Js9p$$$?$@$$$?$_$J$5$^$,$?$K$b(B
-  $B46<U$$$?$7$^$9(B m(_ _)m
+  XVN-MLのみなさまをはじめとした、バグ報告いただいたみなさまがたにも
+  感謝いたします m(_ _)m
 
-$B!|(B $BO"Mm@h(B
+● 連絡先
 
- $BK\%=%U%H%&%'%"$K4X$9$k$*Ld$$9g$o$;$O(B
+ 本ソフトウェアに関するお問い合わせは
 
-  $BEOn49d(B go@denpa.org
+  渡邊剛 go@denpa.org
 
- $B$^$GEE;R%a!<%k$G$*$h$;$/$@$5$$!#(B
- $B%P%0>pJs$d!"%P!<%8%g%s%"%C%W$J$I$N%5%]!<%H$O(B
+ まで電子メールでおよせください。
+ バグ情報や、バージョンアップなどのサポートは
 
   http://leafbsd.denpa.org
 
- $B$G9T$$$^$9!#(B
+ で行います。
 
- $B$=$l$G$ONI$$(B LVNS  + UNIX Life $B$r(B :D
+ それでは良い LVNS  + UNIX Life を :D

@@ -14,7 +14,7 @@
 #include "Lvns.h"
 
 /**
- * $B%R%9%H%j>pJs$NEPO?(B
+ * ヒストリ情報の登録
  */
 void
 LvnsAddHistory(Lvns *lvns, int no)
@@ -55,7 +55,7 @@ checkCursor(Lvns *lvns)
 void 
 LvnsHistoryMode(Lvns *lvns)
 {
-	/* $B>uBV$NJ]B8(B */
+	/* 状態の保存 */
 	int scn = lvns->scn_current;
 	int blk = lvns->blk_current;
 	int fast_text = lvns->fast_text;
@@ -64,7 +64,7 @@ LvnsHistoryMode(Lvns *lvns)
 	int pos = lvns->history_pos - 1;
 
 	lvns->fast_text = True;
-	lvns->current_tvram = 1;      /* $BN"(B */
+	lvns->current_tvram = 1;      /* 裏 */
 	LvnsClearText(lvns);
 
 	lvns->text_cursor_state = 0;
@@ -131,12 +131,12 @@ LvnsHistoryMode(Lvns *lvns)
 	lvns->cursor_down   = False;
 	lvns->motion        = False;
 
-	/* $B>uBV$rI|5"$5$;$k(B */
+	/* 状態を復帰させる */
 	lvns->fast_text     = fast_text;
 	LvnsLoadScenario(lvns, scn, blk);
 	lvns->scn_cur = lvns->scn_cur_head + scn_offset;
 
-	lvns->current_tvram = 0;    /* $BI=(B */
+	lvns->current_tvram = 0;    /* 表 */
 	LvnsDispWindow(lvns);
 
 	return;
