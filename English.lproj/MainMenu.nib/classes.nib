@@ -1,0 +1,22 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                Cancel = id; 
+                CursorDown = id; 
+                CursorUp = id; 
+                ImageMode = id; 
+                Select = id; 
+                SkipTillSelect = id; 
+                SkipTillSelectForce = id; 
+            }; 
+            CLASS = LvnsController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mainWindow = id; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = NSLvnsImage; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

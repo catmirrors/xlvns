@@ -1,0 +1,81 @@
+#include "config.tmpl"
+
+XCOMM ----------------
+XCOMM subdirs
+XCOMM ----------------
+
+DEFINES = -DXLVNSPACKDIR=\"$(XLVNSPACKDIR)\" -DCDDEVICE=\"$(CDDEVICE)\" -DAUDIODEVICE=\"$(AUDIODEVICE)\" $(AUDIODEFINES) ShmDefines
+
+EXTRA_INCLUDES += $(AUDIOINC)
+MYLIBS = $(AUDIOLIB)
+
+#if BuildXF86VidModeExt
+ DEFINES += -DXVIDMODE
+ XVIDOBJ = FullScreenShell.o
+#endif
+
+#if defined(NetBSDArchitecture)
+LOCAL_LIBRARIES = $(MYLIBS) XawClientLibs  $(XXF86VMLIB) -lm -lossaudio
+#else
+LOCAL_LIBRARIES = $(MYLIBS) XawClientLibs  $(XXF86VMLIB) -lm
+#endif
+
+DEPLIBS = XawClientDepLibs $(DEPXXF86VMLIB)
+
+OBJS =  filemap_unix.o\
+	leafpack.o lvnsimage.o lfg.o lf2.o\
+	LvnsEtc.o\
+	LvnsFile.o\
+	LvnsText.o\
+	LvnsDisp.o\
+	LvnsEffect.o\
+	LvnsBackEffect.o\
+	LvnsControl.o\
+	LvnsMusic.o\
+	LvnsSound.o\
+	LvnsAnim.o\
+	LvnsScript.o\
+	LvnsMenu.o\
+	LvnsHistory.o\
+	Lvns.o\
+	sin_effect.o\
+	sin_effect2.o\
+	sizuku.o\
+	sizuku_etc.o\
+	sizuku_jingle.o\
+	sizuku_op.o\
+	sizuku_ed.o\
+	sizuku_file.o\
+	sizuku_menu.o\
+	kizuato.o\
+	kizuato_etc.o\
+	kizuato_jingle.o\
+	kizuato_op.o\
+	kizuato_ed.o\
+	kizuato_file.o\
+	kizuato_menu.o\
+	toheart.o\
+	toheart_etc.o\
+	toheart_op.o\
+	toheart_ed.o\
+	toheart_file.o\
+	toheart_menu.o\
+	toheart_sakura.o\
+	toheart_rain.o\
+	cdinfo.o\
+	audioinfo.o\
+	sximage.o\
+	lvnsimage_sximage.o\
+	LvnsCoreMusic.o\
+	LvnsCoreSound.o\
+	LvnsCore.o\
+	$(XVIDOBJ) XtMain.o
+
+SRCS = $(OBJS:.o=.c)
+
+ComplexProgramTarget(xlvns)
+InstallAppDefaults(XLvns)
+
+InstallNonExec(sizfont.tbl, $(XLVNSPACKDIR))
+InstallNonExec(kizfont.tbl, $(XLVNSPACKDIR))
+InstallNonExec(thfont.tbl, $(XLVNSPACKDIR))

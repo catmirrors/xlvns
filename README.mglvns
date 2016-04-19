@@ -1,0 +1,200 @@
+/*
+ * Leaf Visual Novel System for MGL2 (mglvns)
+ *
+ * Author: TF <tf@denpa.org>
+ * Web page: http://hoshina.denpa.org/mglvns/
+*/
+
+●はじめに
+
+ これは MGL2 環境で LVNS をあそぶためのものです．
+
+ mglvns は XLVNS (http://leafbsd.denpa.org) をベースにしており，現在は，
+ XLVNS の一部として配布されています．
+
+ 現時点では「雫」「痕」「To Heart」が一通りプレイできますが，あやしい
+ ところも多々あるので御注意ください．
+
+
+●動作環境
+
+  MGL2 が動作する UNIX 系 OS
+
+  (開発・テスト環境は
+    - Debian GNU/Linux 2.2 (potato) + mgl2-alpha-020
+    - NetBSD/hpcmips current (20010422) + mgl2-alpha-020
+   です．)
+
+  MGL2 については
+
+    http://www.at.sakura.ne.jp/~suz/MGL2/index.html
+
+  をご覧ください．
+
+  必要なディスク容量(変換後のデータ)は
+
+    雫: 5 MB
+    痕: 9 MB
+    To Heart: 20 MB
+
+  程度です．
+
+
+●コンパイル方法
+
+ <本体>
+    1. Makefile.mglvns を編集
+        1-A. MGLVNS_APPDIR を適宜変更 (変換したデータの置き場所)
+        1-B. MGLVNS_BINDIR を適宜変更 (実行ファイルの置き場所)
+        1-C. フォント拡張を使う場合は -DFONT_PLUS を CFLAGS に指定
+
+    2. make -f Makefile.mglvns
+
+    3. make -f Makefile.mglvns install
+
+ <コンバータ>
+    1. cd mgConvert
+
+    2. make
+
+  「フォント拡張」はリーフフォントを縮小してテキスト表示に使うための拡
+  張機能です．このサイズではさすがに読みやすいとは言えませんが，雰囲気
+  は本物の LVNS に近くなります :-)
+
+
+●データの準備
+
+  mglvns では，「雫」「痕」「To Heart」に入っているデータアーカイブ
+  を変換して利用します．
+
+  (雫の場合)
+
+    1. cd mgConvert
+
+    2. ./pakconv (アーカイブのある場所)/MAX_DATA.PAK MAX_DATA.PAK
+
+    3. 変換後の MAX_DATA.PAK を MGLVNS_APPDIR にコピー
+
+    4. mglvns に添付の sizfont.tbl を MGLVNS_APPDIR にコピー
+
+
+  (痕の場合)
+
+    1. cd mgConvert
+
+    2. ./pakconv (アーカイブのある場所)/MAX2DATA.PAK MAX2DATA.PAK       
+
+    3. 変換後の MAX2DATA.PAK を MGLVNS_APPDIR にコピー
+
+    4. mglvns に添付の kizfont.tbl を MGLVNS_APPDIR にコピー
+
+
+  (To Heart の場合)
+
+    1. cd mgConvert
+
+    2. ./pakconv (アーカイブのある場所)/LVNS3DAT.PAK LVNS3DAT.PAK
+
+    3. 変換後の LVNS3DAT.PAK を MGLVNS_APPDIR にコピー
+
+    4. mglvns に添付の kizfont.tbl を MGLVNS_APPDIR にコピー
+
+    5. To Heart に含まれる LVNS3SCN.PAK (シナリオアーカイブ)と
+       lvns3.exe (桜の花びらの画像を利用)を  MGLVNS_APPDIR にコピー
+
+
+●遊びかた
+
+ <実行コマンド>
+
+    `mglvns [-v <バージョン>] [-f <フォント指定>] [-nb]'
+
+       -v: LVNS のバージョンを指示します．
+           <バージョン>は 1 (雫), 2 (痕), 3 (To Heart)のいずれかであり，
+           省略時のデフォルト値は 1 です．
+
+       -f: 使うフォントを指示します(コンパイル時にフォント拡張が組み込
+           まれている場合に有効)
+
+           <フォント指定>は次の通りです(デフォルト値は "PAK FILE"):
+
+           "system": MGLのフォントを用いて文字描画を行う
+           "PAK FILE": アーカイブ中からKNJ_ALL.KNJを読み込む
+           その他: 指定文字列をファイル名とみなし、そのファイルから読み込む
+
+      -nb: 処理が重い背景効果を無効にします．
+           (雫・痕の「画面うねうね」，To Heart の「桜」「雨」)
+
+      -ne: 各種エフェクトを無効にします．
+
+
+ <キー操作>
+    
+    1, 2, 3, ...: 選択肢を選ぶ + 決定
+    ↑, k: 選択肢を選ぶ
+    ↓, l: 選択肢を選ぶ
+    Enter: 選択肢決定
+
+    ESC: メニュー
+
+    Alt + S: 次の選択肢までスキップ
+    Alt + Q: ゲーム終了
+
+
+●著作権について
+
+ =============================== 重要 ================================
+  本プログラムは，Leaf/(株)アクアプラスの著作物である「雫」に含まれる
+  データを変換して利用します．本パッケージには製品のデータはいっさい含
+  まれていません．
+
+  正規に購入した製品のデータをユーザ各自が取りだして利用することはアク
+  アプラスによって認められていますが，取りだしたデータを配布することは
+  禁止されています．
+
+  (詳しくは http://leaf.aquaplus.co.jp/copyrgt.html をご覧ください．)
+ ===================================================================== 
+
+ (c) Copyright 2001 TF <tf@denpa.org>
+ (c) Copyright 1999-2001 Go Watanabe <go@denpa.org>
+
+・本ソフトウェアのソースコードのライセンスは BSD ライセンスに準じ，著
+  作権者の名前を記載することで，自由に参照・改変・引用できます．著作権
+  者への確認は不要です．
+
+・本ソフトウェアは無保証であり，使用によって生じたいかなる損害について
+  も著作権者は責を負わないものとします．これに合意できない場合は本ソフ
+  トを使用することはできません．
+
+・本ソフトウェアに関する問い合わせをアクアプラスには行わないでください．
+
+
+●謝辞
+
+  mglvns 開発のきっかけを与えてくださったり，実際の開発の手助けをして
+  くださった以下の方々に深く感謝します．
+
+  渡邊剛さん (http://www.denpa.org/~go/)
+      XLVNS の作者さま．
+      mglvns の基本部分は，XLVNS をほとんどそのまま流用させていただい
+      ています．
+
+  桑形浩司さん (http://www2.osk.3web.ne.jp/~kgt/Ruby.html)
+      鎮花祭 for MGL の作者さま．
+      鎮花祭 for MGL を MGL アプリの参考コードとして参照させていただき
+      ました．また RGB→HSB 変換のテーブルを利用させていただきました．
+      mglvns の開発にもご協力いただいています(ChangeLog.mglvns を参照)．
+
+  のなかきみひろさん (http://www.asahi-net.or.jp/~aw9k-nnk/)
+      MobileGear + NetBSD hpcmips に興味を持っていた私に MobileGearII
+      for DoCoMo を貸してくださいました．このことが，mglvns 開発の直接
+      のきっかけとなりました．
+
+  LVNS オリジナルスタッフのみなさま (http://leaf.aquaplus.co.jp/)
+      この面白い作品がなければ何も始まりませんでした．深く感謝しつつ，
+      さらに面白い作品が出てくることを期待します．
+
+  
+●連絡先
+
+ バグ情報，パッチなどは TF <tf@denpa.org> 宛にお願いします．

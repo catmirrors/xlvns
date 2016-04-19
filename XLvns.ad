@@ -1,0 +1,23 @@
+*Title: Leaf Visual Novel Series 1 "SHIZUKU"
+*menu.label: SHIZUKU MENU
+*menu.about.label: About SHIZUKU for X
+*menu.end.label: End GAME
+
+*select.label: Skip till Choice
+*image.label: View Image
+*load.label: Load Data
+*save.label: Save Data
+*before.label: Previous Choice
+*screen.label: Full Screen Mode
+*window.label: Window Mode
+*title.label: Go To Title
+
+lvns2*menu.label: KIZUATO MENU
+lvns2*menu.about.label: About KIZUATO for X
+lvns2*scenarioType: 1
+lvns2*Title: Leaf Visual Novel Series 2 "KIZUATO"
+
+lvns3*menu.label: ToHeart MENU
+lvns3*menu.about.label: About ToHeart for X
+lvns3*scenarioType: 2
+lvns3*Title: Leaf Visual Novel Series 3 "To Heart"

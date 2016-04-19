@@ -1,0 +1,44 @@
+MGLVNS_APPDIR=/home/tf/lib/mglvns
+MGLVNS_BINDIR=/home/tf/bin
+MGL_INCDIR=/usr/local/include
+MGL_LIBDIR=/usr/local/lib
+
+CFLAGS=-I$(MGL_INCDIR) \
+	-DUSE_MGL -DMGLVNS_APPDIR=\"${MGLVNS_APPDIR}\" \
+	-Wall -g -DDEBUG \
+	-DFONT_PLUS
+
+LDFLAGS=-L$(MGL_LIBDIR) -lmgl2
+
+OBJS= mgMain.o mgLvns.o mgImage.o\
+	mgAction.o mgLvnsCore.o mgFont.o\
+	\
+	sizuku.o     sizuku_etc.o   sizuku_jingle.o  sizuku_op.o\
+	sizuku_ed.o  sizuku_file.o  sizuku_menu.o\
+	\
+	kizuato.o     kizuato_etc.o   kizuato_jingle.o  kizuato_op.o\
+	kizuato_ed.o  kizuato_file.o  kizuato_menu.o\
+	\
+	toheart.o  toheart_ed.o   toheart_file.o  toheart_op.o\
+	toheart_etc.o toheart_sakura.o toheart_menu.o\
+	toheart_rain.o\
+	\
+	leafpack.o filemap_unix.o\
+	Lvns.o LvnsMenu.o LvnsControl.o LvnsAnim.o LvnsEffect.o\
+	LvnsCoreMusic.o\
+	LvnsDisp.o LvnsEtc.o\
+	LvnsBackEffect.o sin_effect.o LvnsFile.o LvnsScript.o\
+	LvnsHistory.o LvnsText.o\
+	LvnsSound.o LvnsMusic.o\
+	cdinfo.o
+
+all: mglvns
+
+mglvns: $(OBJS)
+	$(CC) -o mglvns $(OBJS) $(LDFLAGS)
+
+install: mglvns
+	install -s -m 755 mglvns $(MGLVNS_BINDIR)
+
+clean:
+	rm -f mglvns $(OBJS) *~ core

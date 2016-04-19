@@ -1,0 +1,111 @@
+.\"
+.\" Leaf Visual Novel System for X (XLVNS)
+.\" (c) Copyright 1999,2000 Go Watanabe  go@denpa.org
+.\"
+.\" ORIGINAL LVNS Copyright: Leaf/AQUAPLUS 1996,1997,1999,2000
+.\"
+.\" ComicMarket 58 Version 2000 Summer
+.\"
+.\"    -- XLVNS 1-2-3 --
+.\"
+.\" 「雫」 for X Ver 1.8
+.\" 「痕」 for X Ver 1.5
+.\" 「ToHeart」 for X Ver 1.0
+.\"
+.TH XLVNS 1 "28 September 2000" "LeafBSD 0.3"
+
+.SH NAME
+xlvns \- Leaf Visual Novel System for X
+
+.SH SYNOPSIS
+.B xlvns
+[
+.B \-name
+.I game
+]
+[
+.B \-demo
+]
+[
+.B \-screen
+]
+[
+.B \-fastclick
+]
+
+.SH DESCRIPTION
+UNIX + X で \fBLeaf\fR 作品が遊べないのは間違っていると思います(まぢ)。
+Wine ? しょせんエミュです(暴言)。
+やっぱ Native 環境で動かないと意味が無いです。
+.PP
+というわけで作りました :D
+.br
+
+.SH OPTIONS
+.TP
+.BI \-name \ game
+起動するゲームを指定します。
+\fIlvns1\fR が「雫」、\fIlvns2\fR が「痕」、
+\fIlvns3\fR が「ToHeart」です。
+.br
+省略時には「雫」になります。
+.TP
+.B \-demo
+操作をしなくても、自動的にゲームが進みます。
+選択肢は一定時間経過するとランダムで選択されます。
+.TP
+.B \-screen
+全画面モード (640×480 または 800×600)で起動します。
+.br
+このモードで動作させるためにはXFree86 VidMode Extention が必要です。
+また、640×480 または 800×600 の画面モードを XFree86 側で設定しておく
+必要があります。/etc/XF86Config などに適切な設定を追加して下さい。
+.TP
+.B \-fastclick
+通常、未読文書はキー入力があるまで表示をとばすことはできません。
+このオプションをつけて起動している場合には、いつでもキー入力で
+その表示をとばすことが可能です。
+.br
+
+.SH ENVIRONMENT
+起動時に次の環境変数が設定されていた場合には、
+コンパイル時の設定より優先して参照されます。
+.TP
+.B DISC
+CD-DA を再生するデバイス名
+.TP
+.B AUDIODEVICE
+SE を再生するオーディオデバイス名
+.TP
+.B XLVNSPACKDIR
+LVNS の PACK ファイルを格納したディレクトリ
+
+.SH USAGE
+基本的に Windows 版の操作に準じます。
+.TP
+基本的キー操作
+RETURN/左クリック:  選択
+.br
+ESC/右クリック:     メニュー表示
+.br
+カーソル/マウス:    選択カーソル移動
+.br
+スペース:           画像表示モード切り替え
+.br
+s キー:             選択肢までとばす
+.br
+Meta+Return:        画面モードの切り替え
+.TP
+中ボタンメニュー
+About:              バージョン情報を表示
+.br
+End:                プログラムを終了
+.LP
+タイトルでの「終了」またはWindow Manager の delete で終了できます。
+その他の項目はゲーム中のメニューの機能に準じます。
+
+.SH AUTHOR
+渡邊剛 (go@denpa.org)
+
+.SH URL
+.B http://leafbsd.denpa.org
